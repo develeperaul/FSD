@@ -4,3 +4,13 @@
 
 @import './utils/colors';
 
+@import './utils/mixin';
+
+@import './layout/general';
+
+/*primitives*/
+@import '../../components/primitives/buttons/buttons';
+@import '../../components/primitives/checkboxs/checkbox';
+@import '../../components/primitives/inputs/inputs';
+
+/*components*/
