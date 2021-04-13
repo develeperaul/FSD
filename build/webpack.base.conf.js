@@ -28,7 +28,7 @@ module.exports = {
   output: {
     filename: `${PATHS.assets}js/[name].[contenthash].js`,
     path: PATHS.dist,
-    publicPath: '/'
+    
   },
   optimization: {
     splitChunks: {
@@ -115,12 +115,7 @@ module.exports = {
       }
     ]
   },
-  resolve: {
-    alias: {
-      '~': PATHS.src, // Example: import Dog from "~/assets/img/dog.jpg"
-      '@': `${PATHS.src}/js` // Example: import Sort from "@/utils/sort.js"
-    }
-  },
+
   plugins: [
     new MiniCssExtractPlugin({
       filename: `${PATHS.assets}css/[name].[contenthash].css`
