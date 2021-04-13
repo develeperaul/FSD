@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+html,
+body {
+  height: 100%;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: $darkshade75;
+}
+
+h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+h1{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: $darkshade100;
+}
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    color: $darkshade100;
+}
+h3{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: $darkshade100;
+}
