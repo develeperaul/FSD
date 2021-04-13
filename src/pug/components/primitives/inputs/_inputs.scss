@@ -1,0 +1,41 @@
+/*start Inputemail*/
+.input-email{
+    width: 213px;
+    height: 29px;
+    display: block;
+    margin-top: 50vh;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 3px;
+    border: 1px solid $darkshade25;
+
+    @include fontFace($fontSize:9, $color:$darkshade25, $spacing:1);
+    padding: 9px;
+    transition-property: border-color, color;
+    transition-duration: .5s;
+    &:focus, &:hover{
+        border-color: $darkshade50;
+        color: $darkshade75;
+    }
+}
+input.input-email::placeholder{
+    @include fontFace($fontSize:9, $color:$darkshade25, $spacing:1);
+}
+/*end Inputemail*/
+
+@mixin inputStyle($width:320, $height:44){
+    width: $width + px;
+    height: $height + px;
+    padding: 13px 15px;
+    background: #FFFFFF;
+    border: 1px solid $darkshade25;
+    border-radius: 4px;
+    
+    transition-property: border-color, color;
+    transition-duration: .5s;
+    
+    &:hover, &:focus {
+     border-color: $darkshade75;
+     color: $darkshade75
+    }
+   }
