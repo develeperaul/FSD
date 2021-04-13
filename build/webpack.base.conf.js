@@ -1,6 +1,5 @@
 const path = require('path');
 const fs = require('fs');
-const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -12,129 +11,145 @@ const PATHS = {
   assets: 'assets/'
 };
 
-const PAGES_DIR = `${PATHS.src}/assets/pug`;
+
+const PAGES_DIR = `${PATHS.src}/pug/pages`;
 const PAGES = fs
   .readdirSync(PAGES_DIR)
-  .filter(fileName => fileName.endsWith('.pug'));
+  .filter(fileName => fileName.endsWith('.pug'))
 
 module.exports = {
-externals: {
+  externals: {
     paths: PATHS
-},
-entry: {
+  },
+  entry: {
     app: PATHS.src
     
-},
-output: {
+  },
+  output: {
     filename: `${PATHS.assets}js/[name].[contenthash].js`,
     path: PATHS.dist,
     publicPath: '/'
-},
-optimization: {
+  },
+  optimization: {
     splitChunks: {
-    cacheGroups: {
+      cacheGroups: {
         vendor: {
-        name: 'vendors',
-        test: /node_modules/,
-        chunks: 'all',
-        enforce: true
+          name: 'vendors',
+          test: /node_modules/,
+          chunks: 'all',
+          enforce: true
         }
+      }
     }
-    }
-},
-module: {
+  },
+  module: {
     rules: [
-    {
+      {
         // pug
         test: /\.pug$/,
         loader: 'pug-loader',
-    },
-    {
+      },
+      {
         // JavaScript
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: '/node_modules/'
-    },
-    {
+      },
+      {
         // Fonts
         test: /\.(woff(2)?|ttf|eot|otf|svg)(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'file-loader',
         options: {
-        name: '[name].[ext]'
+          name: '[name].[ext]'
         }
-    },
-    {
+      },
+      {
         // images / icons
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
-        name: '[name].[ext]'
+          name: '[name].[ext]'
         }
-    },
-    {
+      },
+      {
         // scss
         test: /\.scss$/,
         use: [
-        'style-loader',
-        MiniCssExtractPlugin.loader,
-        {
+          'style-loader',
+          MiniCssExtractPlugin.loader,
+          {
             loader: 'css-loader',
             options: { sourceMap: true }
-        },
-        {
+          },
+          {
             loader: 'postcss-loader',
             options: {
-            sourceMap: true,
-            config: { path: `./postcss.config.js` }
+              sourceMap: true,
+              config: { path: `./postcss.config.js` }
             }
-        },
-        {
+          },
+          {
             loader: 'sass-loader',
             options: { sourceMap: true }
-        }
+          }
         ]
-    },
-    {
+      },
+      {
         // css
         test: /\.css$/,
         use: [
-        'style-loader',
-        MiniCssExtractPlugin.loader,
-        {
+          'style-loader',
+          MiniCssExtractPlugin.loader,
+          {
             loader: 'css-loader',
             options: { sourceMap: true }
-        },
-        {
+          },
+          {
             loader: 'postcss-loader',
             options: {
-            sourceMap: true,
-            config: { path: `./postcss.config.js` }
+              sourceMap: true,
+              config: { path: `./postcss.config.js` }
             }
-        }
+          }
         ]
-    }
+      }
     ]
-},
-plugins: [
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-    }),
+  },
+  resolve: {
+    alias: {
+      '~': PATHS.src, // Example: import Dog from "~/assets/img/dog.jpg"
+      '@': `${PATHS.src}/js` // Example: import Sort from "@/utils/sort.js"
+    }
+  },
+  plugins: [
     new MiniCssExtractPlugin({
-      filename: `${PATHS.assets}css/[name].[hash].css`,
+      filename: `${PATHS.assets}css/[name].[contenthash].css`
     }),
-    new CopyWebpackPlugin([
-      { from: `${PATHS.src}/img`, to: `${PATHS.assets}img` },
-      { from: `${PATHS.src}/fonts`, to: `${PATHS.assets}fonts` },
-      { from: `${PATHS.src}/static`, to: "" },
-    ]),
-
+    new CopyWebpackPlugin({
+      patterns: [
+        // Images:
+        {
+          from:  `${PATHS.src}/img`,
+          to: `${PATHS.assets}img`
+        },
+        // Fonts:
+        {
+          from: `${PATHS.src}/fonts`,
+          to: `${PATHS.assets}fonts`
+        },
+        // Static (copy to '/'):
+        {
+          from: `${PATHS.src}/static`,
+          to: ''
+        }
+      ]
+    }),
     ...PAGES.map(
-      (page) =>
+      page =>
         new HtmlWebpackPlugin({
           template: `${PAGES_DIR}/${page}`,
-          filename: `./${page.replace(/\.pug/, ".html")}`,
+          filename: `./${page.replace(/\.pug/,'.html')}`
         })
-    ),
-  ],
-};
+    )
+  ]
+}
