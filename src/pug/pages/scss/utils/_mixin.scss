@@ -1,9 +1,8 @@
-@mixin fontFace($fontWeight: 400, $fontSize: 14, $lineHeight: 24, $color: $darkshade75 , $spacing: 0){
+@mixin fontFace($fontWeight: 400, $fontSize: 14, $color: $darkshade75 , $spacing: 0){
     font-family: 'Montserrat'  sans-serif;
     font-style: $fontWeight;
     font-weight: $fontWeight;
     font-size: $fontSize + px;
-    line-height: $lineHeight + px;
     color: $color;
     letter-spacing: $spacing + px;
 }
