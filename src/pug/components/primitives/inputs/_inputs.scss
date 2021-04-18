@@ -11,7 +11,8 @@
     &-email, 
     &-guests,
     &-birthdate,
-    &-date{
+    &-date,
+    &-datefilter{
         @include fontFace($fontFam: 'MontserratBold',$fontWeight:700,$fontSize:12,$color: $darkshade75,$spacing:0.35);
         line-height: 15px;
         padding-bottom: 4px;
@@ -20,7 +21,8 @@
       
     
 /*dropdown guests title*/
-    &-guests{
+    &-guests,
+    &-datefilter{
         letter-spacing: 1px
     }    
     &-date{
@@ -61,6 +63,17 @@
     }
     &-date{
         @include inputForm($width: 150);
+        padding-top: 12px;
+        padding-left: 14px;
+        cursor: pointer;    
+        @include arrowDown();
+
+        &__text{
+            @include fontFace($color:$darkshade75);
+        }
+    }    
+    &-datefilter{
+        @include inputForm($width: 266);
         padding-top: 12px;
         padding-left: 14px;
         cursor: pointer;    
