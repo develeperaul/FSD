@@ -5,3 +5,24 @@ html(lang='en')
     title
       | raul
   body
+  include ../components/primitives/inputs/_inputs.pug
+  .wrapper
+    //-
+      +inputTitle("title-email", "Text field")
+      +inputName("input-email", "text", "Email")
+      
+      
+      +inputTitle("title-guests", "Dropdown")  
+      +inputDropdown("input-guests", "Сколько гостей")
+
+      +inputTitle("title-birthdate", "Masked Text Field")
+      +inputName("input-birthdate", "text", "ДД.ММ.ГГГГ")
+
+      +inputTitle("title-date", "date Dropdown")  
+      +inputDropdown("input-date", "ДД.ММ.ГГГГ")
+
+      +inputTitle("title-datefilter", "filter date dropdown")  
+      +inputDropdown("input-datefilter", "19 авг - 23 авг")
+
+    +inputTitle("title-subscription", "subscription text field")  
+    +inputDropdown("input-subscription", "Email")
