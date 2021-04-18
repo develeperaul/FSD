@@ -8,21 +8,31 @@
 }
 .title{
 /*email password title*/
-    &-email, &-guests{
-        @include fontFace($fontFam: 'MontserratBold',$fontWeight:700,$fontSize:12,$color: $darkshade75,$spacing:0.25);
+    &-email, 
+    &-guests,
+    &-birthdate,
+    &-date{
+        @include fontFace($fontFam: 'MontserratBold',$fontWeight:700,$fontSize:12,$color: $darkshade75,$spacing:0.35);
         line-height: 15px;
         padding-bottom: 4px;
         text-transform: uppercase;
     }
+      
+    
 /*dropdown guests title*/
     &-guests{
         letter-spacing: 1px
+    }    
+    &-date{
+        letter-spacing: 0.75px
     }    
 }
 
 .input{
 /*email password input*/
-    &-email, &-password{
+    &-email,
+    &-password,
+    &-birthdate{
         @include inputForm();
         @include fontFace($fontSize:14, $color:$darkshade25, $spacing:1);
         transition-property: border-color, color;
@@ -49,6 +59,17 @@
             @include fontFace($color:$darkshade75);
         }
     }
+    &-date{
+        @include inputForm($width: 150);
+        padding-top: 12px;
+        padding-left: 14px;
+        cursor: pointer;    
+        @include arrowDown();
+
+        &__text{
+            @include fontFace($color:$darkshade75);
+        }
+    }    
     
 }
 
