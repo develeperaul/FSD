@@ -1,33 +1,56 @@
-/*start Inputtitle*/
-.input-title{
-    @include fontFace($fontWeight:700,$fontSize:8,$color: $darkshade75, $spacing:0.1);
-    line-height: 15px;
-    text-transform: uppercase;
+
+.wrapper {
+    height: 100vh;
+    display: block;
+    margin-left: 100px;
+    margin-top: 100px;
+    
 }
-/*end Inputtitle*/
-/*start Inputemail*/
+.title{
+/*email password title*/
+    &-email, &-guests{
+        @include fontFace($fontFam: 'MontserratBold',$fontWeight:700,$fontSize:12,$color: $darkshade75,$spacing:0.25);
+        line-height: 15px;
+        padding-bottom: 4px;
+        text-transform: uppercase;
+    }
+/*dropdown guests title*/
+    &-guests{
+        letter-spacing: 1px
+    }    
+}
+
 .input{
+/*email password input*/
     &-email, &-password{
         @include inputForm();
-        @include fontFace($fontSize:9, $color:$darkshade25, $spacing:1);
+        @include fontFace($fontSize:14, $color:$darkshade25, $spacing:1);
         transition-property: border-color, color;
         transition-duration: .5s;
         &:focus, &:hover{
             border-color: $darkshade50;
             color: $darkshade75;
         }
-    }
-    
-}
-.input{
-    &-email, &password{
+
         &::placeholder{
-            @include fontFace($fontSize:9, $color:$darkshade25, $spacing:1);
+            @include fontFace($color:$darkshade25, $spacing:0);
+        }
+    }
+
+/*dropdown guests input*/
+    &-guests{
+        @include inputForm();
+        padding-top: 12px;
+        padding-left: 14px;
+        cursor: pointer;    
+        @include arrowDown();
+
+        &__text{
+            @include fontFace($color:$darkshade75);
         }
     }
     
 }
 
 
-/*end Inputemail*/
 

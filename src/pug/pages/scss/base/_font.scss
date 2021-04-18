@@ -1,15 +1,18 @@
 @font-face {
-    font-family: "Montserrat";
+    font-family: "MontserratBold";
     font-weight: 700;
+    font-style: normal;
     src: url('/src/fonts/Montserrat-Bold.eot'),
-         url('/src/fonts/Montserrat-Bold.otf'),
-         url('/src/fonts/Montserrat-Bold.svg'),
-         url('/src/fonts/Montserrat-Bold.ttf'),
-         url('/src/fonts/Montserrat-Bold.woff') 
+         url('/src/fonts/Montserrat-Bold.otf') format('embedded-opentype'),
+         url('/src/fonts/Montserrat-Bold.svg') format('svg'),
+         url('/src/fonts/Montserrat-Bold.ttf') format('truetype'),
+         url('/src/fonts/Montserrat-Bold.woff') format('woff') 
+         
 }
 @font-face {
     font-family: "Montserrat";
     font-weight: 400;
+    font-style: normal;
     src: url('/src/fonts/Montserrat-Regular.eot'),
          url('/src/fonts/Montserrat-Regular.otf'),
          url('/src/fonts/Montserrat-Regular.svg'),
