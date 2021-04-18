@@ -1,16 +1,73 @@
-@mixin fontFace($fontWeight: 400, $fontSize: 14, $color: $darkshade75 , $spacing: 0){
-    font-family: 'Montserrat'  sans-serif;
+@mixin fontFace($fontFam: 'Montserrat', $fontWeight: 400, $fontSize: 14, $color: $darkshade75 , $spacing: 0){
+    font-family: $fontFam,  sans-serif;
     font-style: $fontWeight;
     font-weight: $fontWeight;
     font-size: $fontSize + px;
     color: $color;
     letter-spacing: $spacing + px;
 }
-@mixin inputForm($width: 213, $height: 29){
+@mixin inputForm($width: 320, $height: 44){
     width: $width +px;
     height: $height +px;
-    display: block;
+    display: inline-block;
     border-radius: 3px;
     border: 1px solid $darkshade25;
-    padding: 9px;
+    padding: 14px;
+    
+}
+
+/* стрелка вниз */
+@mixin arrowDown(){
+    position: relative;
+    
+    
+    &::after{
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 11px;
+        
+        width: 7px;
+        height: 7px;
+        border-top: 2px solid $darkshade50;
+        border-right: 2px solid $darkshade50;
+        transform: rotate(135deg) translateY(100%);
+        cursor:pointer;
+        pointer-events:none;
+        transition:.25s all ease;
+    }
+    &:hover::after {
+        border-top: 2px solid $darkshade75;
+        border-right: 2px solid $darkshade75;
+    }
+}
+
+/*стрелка на право*/
+@mixin arrowRight($color: $purple) {
+    margin-right: 15px;
+    position: relative;
+    &::after{
+        content: "";
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        width: 9px;
+        height: 9px;
+        border-top: 2px solid $color;
+        border-right: 2px solid $color;
+        transform: rotate(45deg) translate(-35%, -35%);
+        pointer-events: none;
+        
+        
+    }
+    &::before{
+        content: "";
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translate(0%, -50%);
+        background: $color;
+        width: 14px;
+        height: 2px;
+    }   
 }
