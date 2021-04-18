@@ -2,6 +2,12 @@
 mixin inputTitle(name,text)
     div(class=name)= text
 
-// class type value placeholder
+// class type value placeholder input email password name -- input
 mixin inputName(name, type, place)
-    input(class=name type=type placeholder=place)
+    input(class=`${name}` type=`${type}` placeholder=`${place}`)
+
+// dropdown input
+mixin inputDropdown(name, text)
+    div(class=name)
+        span(class=`${name}__text`)= text
+
