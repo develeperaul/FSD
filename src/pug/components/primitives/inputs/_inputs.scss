@@ -15,7 +15,7 @@
     &-date,
     &-datefilter,
     &-subscription{
-        @include fontFace($fontFam: 'MontserratBold',$fontWeight:700,$fontSize:12,$color: $darkshade75,$spacing:0.35);
+        @include fontFace($fontWeight:700,$fontSize:12,$color: $darkshade75,$spacing:0.35);
         line-height: 15px;
         padding-bottom: 4px;
         text-transform: uppercase;
