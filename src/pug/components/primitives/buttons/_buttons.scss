@@ -1,0 +1,62 @@
+.button{
+    &-gradient{
+        text-transform: uppercase;    
+        padding-right: 4px;
+        &_bg{   
+            
+            @include buttons($border:0);
+            .button-gradient__text{
+                @include fontFace( $fontWeight:bold,$fontSize:11, $color: $white, $spacing:0);   
+            }
+        }
+        &_border{
+            @include buttons($background: $white);
+            background-clip: padding-box;
+            &::after {
+                content:'';
+                position: absolute;
+                top: -2px; 
+                bottom: -2px;
+                left: -2px; 
+                right: -2px;
+                background: $gradient;
+                border-radius: 22px;
+                z-index: -1;
+                
+            } 
+            &:hover{
+                &::after {
+                    content:'';
+                    position: absolute;
+                    top: -2px; 
+                    bottom: -2px;
+                    left: -2px; 
+                    right: -2px;
+                    background: $gradient;
+                    border-radius: 22px;
+                    z-index: -1;
+                    opacity: 0.5;    
+                } 
+                
+            } 
+            .button-gradient__text{
+                @include fontFace( $fontWeight:bold,$fontSize:11, $color: $purple, $spacing:0);
+            } 
+        }
+        &_big{
+            @include buttons($border:0, $width:320);
+            padding-right: 0px;
+            .button-gradient__text{
+                @include fontFace( $fontWeight:bold,$fontSize:11, $color: $white, $spacing:0.7);   
+            }
+            @include arrowRight($color:$white, $right:16);
+
+        }
+
+    }
+    &__text{
+        text-transform: uppercase;
+        @include fontFace( $fontWeight:bold,$fontSize:11, $color: $purple, $spacing:0);
+    }
+
+}

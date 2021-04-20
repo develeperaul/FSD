@@ -1,0 +1,7 @@
+//-buttonBgGradient
+mixin buttonBgGradient(name, title)
+    button(class=`button-gradient button-gradient_${name}`) 
+        p.button-gradient__text= title
+
+mixin buttonText(name, text)
+    span(class=`button__${name}`)=text
